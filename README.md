@@ -1,4 +1,5 @@
 ```md
+
 # RabbitMQ WebSocket Stock Update System
 
 This project is a Spring Boot application that integrates **RabbitMQ** and **WebSockets** to provide real-time stock updates.  
@@ -19,6 +20,7 @@ Ensure you have the following installed before running the project:
 
 Run the following command to start RabbitMQ with a management dashboard:
 
+```sh
 Docker Command:
 docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
