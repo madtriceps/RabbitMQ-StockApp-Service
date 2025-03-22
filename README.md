@@ -35,7 +35,7 @@ docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ```sh
 git clone https://github.com/your-repo.git
 cd RabbitMQ_Demo
-mvn clean install
+mvn clean install (optional)
 ```
 
 ### **Required Maven Dependencies**
@@ -64,7 +64,7 @@ Ensure these dependencies are present in `pom.xml`:
 </dependency>
 ```
 
-### **Run the Backend**
+### **Run the Backend through mvn cli or simply IDE**
 ```sh
 mvn spring-boot:run
 ```
@@ -179,4 +179,28 @@ public class SchedulerConfig {
 | **Spring Boot** | Backend logic with WebSocket & RabbitMQ |
 | **React** | Frontend subscribing to WebSocket |
 
-Everything should now be working! 🚀  
+Everything should now be working!   
+
+---------Flow Explained ---------------------------
+
+
+Flow Explanation:
+Stock Producer (Scheduler in Spring Boot)
+
+Sends stock updates to RabbitMQ Exchange every 2 seconds.
+
+RabbitMQ Exchange & Queue
+
+Routes the message to the correct queue where the consumer listens.
+
+Stock Consumer (RabbitMQ Listener)
+
+Receives messages and forwards them to WebSocket subscribers.
+
+WebSocket Broker (Spring Boot WebSocket)
+
+Broadcasts the stock updates to React frontend subscribers via /topic/stocks.
+
+React Frontend (STOMP.js WebSocket Client)
+
+Subscribes to /topic/stocks and displays real-time updates.
