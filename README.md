@@ -135,10 +135,10 @@ Sent stock update: AAPL:118.45
 Run the frontend and check if stock updates appear in the browser console.
 
 ### **Manually Send a Message (Optional)**
-If needed, use **Postman** or `curl` to manually send a message:
+If needed, use **Postman** or `curl` to manually send a message trigger for manual testing purpose:
 
 ```sh
-curl -X POST http://localhost:8080/send
+http://localhost:8080/send
 ```
 
 ---
